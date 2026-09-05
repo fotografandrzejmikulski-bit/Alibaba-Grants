@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "fixture": "terraform-minimal",
+  "status": "PASS_EXPECTED",
+  "checks": {
+    "source_pattern_detection": "PASS_EXPECTED",
+    "target_artifact_shape": "PASS_EXPECTED",
+    "secret_pattern_scan": "PASS_EXPECTED",
+    "deployment_gate": "BLOCKED_UNTIL_HUMAN_APPROVAL"
+  },
+  "evidence_class": "fixture-level_demonstration",
+  "cloud_execution": false,
+  "customer_execution": false,
+  "percentage_performance_claim": false
+}
