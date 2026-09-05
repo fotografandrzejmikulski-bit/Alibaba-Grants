@@ -1,6 +1,5 @@
 {
   "schema_version": "0.1",
-  "project": "OMEGA-X",
   "fixture": "terraform-minimal",
   "source": {
     "provider": "aws",
@@ -8,28 +7,34 @@
   },
   "target": {
     "provider": "alibaba-cloud",
-    "region": "TBD_AFTER_CAPACITY_REVIEW"
+    "region": "UNRESOLVED"
   },
   "resources": [
     {
       "source_address": "aws_instance.web",
+      "source_type": "aws_instance",
       "target_service": "ECS",
-      "confidence": "high",
-      "status": "proposal",
-      "deployment_allowed": false
+      "mapping_status": "PROPOSED",
+      "confidence": "HIGH",
+      "notes": "Generic compute mapping; exact instance family is workload and region dependent."
     },
     {
       "source_address": "aws_db_instance.app",
-      "target_service": "managed-postgresql-compatible-database",
-      "confidence": "medium",
-      "status": "proposal",
-      "deployment_allowed": false,
-      "review_items": [
-        "engine/version compatibility",
-        "high availability",
-        "storage/performance",
-        "backup/restore"
-      ]
+      "source_type": "aws_db_instance",
+      "target_service": "Alibaba Cloud managed PostgreSQL-compatible database service",
+      "mapping_status": "REVIEW_REQUIRED",
+      "confidence": "MEDIUM",
+      "notes": "Exact target service and migration path require engine, version, HA, backup, and regional compatibility review."
     }
+  ],
+  "controls": {
+    "deployment_allowed": false,
+    "human_approval_required": true,
+    "target_region_must_be_resolved": true
+  },
+  "assumptions": [
+    "Fixture is sanitized and contains placeholders.",
+    "No live cloud APIs are called by the fixture validator.",
+    "One-to-one service equivalence is not assumed."
   ]
 }
