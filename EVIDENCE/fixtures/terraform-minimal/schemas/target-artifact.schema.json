@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OMEGA-X Target Artifact",
+  "type": "object",
+  "required": ["schema_version", "fixture", "source", "target", "resources", "controls", "assumptions"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "fixture": {"const": "terraform-minimal"},
+    "source": {
+      "type": "object",
+      "required": ["provider", "region"],
+      "properties": {"provider": {"const": "aws"}, "region": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "object",
+      "required": ["provider", "region"],
+      "properties": {"provider": {"const": "alibaba-cloud"}, "region": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_address", "source_type", "target_service", "mapping_status", "confidence", "notes"],
+        "properties": {
+          "source_address": {"type": "string"},
+          "source_type": {"type": "string"},
+          "target_service": {"type": "string"},
+          "mapping_status": {"enum": ["PROPOSED", "REVIEW_REQUIRED", "BLOCKED"]},
+          "confidence": {"enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "controls": {
+      "type": "object",
+      "required": ["deployment_allowed", "human_approval_required", "target_region_must_be_resolved"],
+      "properties": {
+        "deployment_allowed": {"type": "boolean"},
+        "human_approval_required": {"type": "boolean"},
+        "target_region_must_be_resolved": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "assumptions": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
