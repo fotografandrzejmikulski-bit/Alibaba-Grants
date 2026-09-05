@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "fixture": "terraform-minimal",
+  "validation": {
+    "syntax_validation": "PASS_EXPECTED",
+    "schema_validation": "PASS_EXPECTED",
+    "policy_validation": "REVIEW_REQUIRED",
+    "secret_scan": "PASS_EXPECTED",
+    "deployment_gate": "BLOCKED_UNTIL_HUMAN_APPROVAL"
+  },
+  "notes": [
+    "This fixture contains placeholders and is not deployable.",
+    "Target region is intentionally unresolved.",
+    "Database compatibility requires human/technical review."
+  ],
+  "evidence_status": "fixture-level_demonstration",
+  "not_a_claim_of_cloud_execution": true
+}
