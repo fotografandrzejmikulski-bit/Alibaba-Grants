@@ -2,282 +2,424 @@
 
 **Applicant:** Andrzej Mikulski  
 **Applicant type:** Private individual  
-**Professional distinctions:** AFRP, AFIAP, EFIAP  
+**Professional distinctions:** AFRP · AFIAP · EFIAP  
+**Location:** Cieszyn, Poland  
 **Email:** mojealterego21@gmail.com  
 **Phone:** +48 455 575 337  
 **Website:** None  
 **Company / legal entity:** None  
 **VC referral:** None / N/A  
-**Alibaba Cloud Account ID:** supplied privately and intentionally omitted from this public repository
+**Alibaba Cloud Account ID:** supplied privately through the official application channel; deliberately excluded from this public repository
+
+---
 
 ## 1. Executive Summary
 
-OMEGA-X is an agentic AI platform for enterprise cloud-migration qualification and controlled execution. It is designed to reduce the engineering friction that prevents organizations with substantial AWS estates from seriously evaluating Alibaba Cloud.
+OMEGA-X is an **agentic AI enterprise migration qualification and conversion engine** designed to reduce the engineering work required to evaluate, validate, and operationalize the migration of AWS workloads to Alibaba Cloud.
 
-Instead of treating migration as a sequence of disconnected consulting tasks, OMEGA-X creates a single evidence-producing workflow:
+The central problem is not the absence of target-cloud services. It is the cost of proving that a real enterprise workload can be translated, secured, costed, tested, and operated on a different cloud with sufficient evidence for engineering, security, finance, and executive stakeholders.
 
-**Discovery → architecture normalization → source-to-target mapping → Infrastructure-as-Code transformation → security and policy validation → TCO/ROI analysis → bounded POC → production decision**
+OMEGA-X addresses that bottleneck through a controlled workflow:
 
-The core thesis is simple: enterprise cloud migration is delayed less by the existence of target-cloud services than by the engineering effort required to prove that a real workload can be moved safely, economically, and operationally.
+**Discovery → architecture normalization → dependency analysis → source-to-target mapping → Infrastructure-as-Code transformation → deterministic security/policy validation → TCO/ROI modeling → evidence package → bounded POC → production decision**
 
-OMEGA-X is intended to make that proof faster, more repeatable, and more auditable.
+The project is currently described as **Alpha 0.4** in the underlying project brief. The present evidence package deliberately separates demonstrated fixture-level capability from future cloud-hosted and customer-pilot validation.
 
-## 2. The Problem
+The requested program support would move OMEGA-X from an early, testable system into a reproducible Alibaba Cloud validation program with measurable technical, economic, and operational outcomes.
 
-Large enterprise migration programs require repeated manual work across architecture, infrastructure engineering, security, compliance, finance, and operations. Teams must understand the source estate, dependencies, infrastructure definitions, security controls, data-residency constraints, target-service compatibility, cost assumptions, and deployment risks before a migration can be approved.
+---
 
-This creates a conversion bottleneck. A prospective customer may be interested in Alibaba Cloud but remain stuck in technical qualification because the cost of proving migration feasibility is high relative to the perceived value of beginning the migration.
+## 2. The Enterprise Problem: Migration Is a Proof Problem
 
-The bottleneck is therefore not simply provisioning. It is **proof**.
+Enterprise cloud migration is constrained by more than provisioning. Before a production decision, teams typically need to answer:
 
-## 3. The Solution
+- What resources and dependencies exist in the source estate?
+- Which target services are actually compatible?
+- Which components require redesign rather than translation?
+- What security and identity changes are required?
+- Where are sensitive-data and regional constraints?
+- What will the target architecture cost under explicit assumptions?
+- Can the generated Infrastructure-as-Code be validated deterministically?
+- What evidence is available for technical approval?
 
-OMEGA-X turns approved infrastructure descriptors and architecture metadata into a structured migration evidence package.
+These activities are often fragmented across architecture, infrastructure engineering, security, compliance, finance, and operations. This creates a **technical qualification bottleneck** that can delay a cloud decision even when there is strategic interest in the target platform.
 
-The system is designed to:
+OMEGA-X is designed to compress this proof cycle into a single auditable workflow.
 
-1. ingest approved infrastructure definitions,
-2. normalize resources into a canonical representation,
-3. construct dependency and topology relationships,
-4. identify source-to-target Alibaba Cloud service mappings,
-5. generate or transform Infrastructure-as-Code and migration artifacts,
-6. evaluate security and policy requirements,
-7. produce assumptions, unresolved risks, and validation findings,
-8. calculate scenario-based TCO/ROI,
-9. prepare a bounded POC plan,
-10. retain an audit trail of inputs, generated artifacts, validation decisions, and approvals.
+---
 
-The product does not assume that every AWS resource has a one-to-one Alibaba Cloud equivalent. Where redesign, compatibility analysis, or human review is required, the workflow records that explicitly.
+## 3. Why OMEGA-X Is Different
 
-## 4. Why AI Is Necessary
+OMEGA-X is not positioned as a simple Terraform translator.
 
-The workflow contains several classes of work that are highly repetitive but context-heavy:
+Its design goal is to combine four functions into one controlled system:
 
-- interpreting infrastructure structures,
-- reasoning across service dependencies,
-- proposing architecture mappings,
-- transforming Infrastructure-as-Code,
-- explaining security findings,
-- generating migration documentation,
-- synthesizing technical evidence,
-- comparing alternative target configurations.
+1. **Interpretation** — understand the source environment and its constraints.
+2. **Transformation** — propose and generate source-to-target infrastructure changes.
+3. **Assurance** — validate generated material before consequential use.
+4. **Conversion evidence** — produce the technical and economic documentation needed to move from discovery to POC and, where justified, production.
 
-A coordinated AI workflow can reduce iterative engineering effort while still preserving deterministic controls around generated infrastructure.
+The resulting product is intended to function as a **technical conversion layer** between enterprise interest in Alibaba Cloud and an evidence-backed migration decision.
 
-OMEGA-X therefore treats language-model output as **untrusted generated material** until it passes deterministic validation and policy gates.
+---
 
-## 5. Agent Architecture
+## 4. AI Use Case
 
-The proposed agent topology contains four bounded roles.
+OMEGA-X applies coordinated AI reasoning to infrastructure and migration tasks that are repetitive but context-heavy:
 
-### Coordinator
-Maintains workflow state, decomposes the migration into bounded tasks, applies execution budgets and termination conditions, and routes work to specialist agents.
+- interpretation of Terraform and architecture metadata,
+- dependency-aware source-to-target mapping,
+- infrastructure code transformation,
+- security and policy reasoning,
+- explanation of migration risks and assumptions,
+- generation of migration documentation,
+- scenario comparison for target architectures,
+- synthesis of validation and audit evidence.
 
-### Architect
-Analyzes source topology, dependencies, availability constraints, target requirements, and assumptions. Produces a proposed target architecture with explicit uncertainty.
+The system is deliberately designed so that **LLM output is not trusted executable infrastructure**. Generated artifacts enter a deterministic validation boundary before promotion, and consequential deployment actions require explicit authorization.
 
-### Developer
-Transforms or generates Infrastructure-as-Code and supporting configuration. Its output is never promoted directly to production.
+Alibaba Cloud **Model Studio** and **Qwen-family models** are proposed as the AI backbone where performance, cost, region availability, context requirements, and program terms make them the appropriate choice.
 
-### Security
-Evaluates access patterns, exposed services, sensitive-data handling, policy constraints, and deployment gates. Security findings can block promotion until resolved.
+---
 
-## 6. Deterministic Safety Layer
+## 5. Technical Architecture
 
-The safety boundary is a core part of OMEGA-X rather than an optional feature.
+### 5.1 Input and normalization
 
-Generated material is subject to:
+The system ingests approved infrastructure descriptors and architecture metadata and converts them into a canonical representation of resources, dependencies, constraints, and assumptions.
+
+### 5.2 Multi-agent orchestration
+
+The proposed topology uses four bounded roles:
+
+**Coordinator**  
+Maintains workflow state, decomposes work into bounded tasks, applies execution budgets, retries, and termination conditions, and routes tasks to specialist agents.
+
+**Architect**  
+Builds source and target topology models, evaluates dependencies, availability requirements, architectural assumptions, and target-cloud constraints.
+
+**Developer**  
+Transforms or generates Infrastructure-as-Code and supporting configuration. Outputs remain untrusted until validation succeeds.
+
+**Security**  
+Evaluates access assumptions, exposed services, sensitive-data handling, policy requirements, and deployment gates.
+
+### 5.3 Deterministic assurance layer
+
+OMEGA-X incorporates:
 
 - syntax and schema validation,
 - policy-as-code checks,
 - secret detection and redaction,
 - immutable artifact hashing,
-- bounded retry and repair loops,
-- execution timeouts,
+- bounded repair loops,
 - model-call budgets,
+- execution timeouts,
 - explicit termination conditions,
 - audit logging,
-- human authorization for consequential actions.
+- human approval gates for consequential actions.
 
-This architecture is intended to address a central risk in agentic infrastructure tooling: an incorrect model response must not become an uncontrolled infrastructure action.
+This separation is intended to prevent model error, prompt manipulation, or agent looping from becoming uncontrolled infrastructure activity or uncontrolled cloud spend.
 
-## 7. Alibaba Cloud Strategic Fit
+---
 
-OMEGA-X is designed specifically to reduce the technical friction surrounding Alibaba Cloud enterprise adoption.
+## 6. Real Evidence Already Created
 
-For Alibaba Cloud, the value proposition is not limited to compute consumption from OMEGA-X itself. The larger strategic value is the potential acceleration of enterprise workload qualification and conversion.
+The repository now contains a **sanitized, offline, fixture-level evidence package** for the Alpha 0.4 workflow. It includes:
 
-The intended commercial pathway is:
+- a minimal AWS Terraform fixture,
+- expected source-to-target mappings,
+- a machine-readable target artifact,
+- a machine-readable expected validation result,
+- an offline deterministic validator,
+- SHA-256 manifest tooling,
+- a reproducibility runbook,
+- an evidence CI gate checklist.
 
-**Enterprise opportunity → technical qualification → evidence package → POC → migration decision → production workload**
+The fixture intentionally uses placeholders and does not contact AWS or Alibaba Cloud. Its validation result explicitly keeps the deployment gate blocked pending human approval and marks the evidence as fixture-level demonstration. This is real repository evidence, but it is **not represented as live cloud execution, production readiness, customer traction, or measured commercial performance**.
 
-Each successful migration can therefore create a new Alibaba Cloud workload while also supplying measurable evidence about the effectiveness of the migration process.
+This distinction is deliberate: the application should be auditable rather than merely persuasive.
 
-OMEGA-X can also produce sales-enablement artifacts such as:
+---
 
-- source-to-target architecture maps,
-- migration complexity assessments,
-- security findings,
-- unresolved-risk registers,
-- TCO/ROI scenarios,
-- POC readiness packages.
+## 7. Evidence Maturity Model
 
-## 8. Model Studio and Qwen Strategy
+OMEGA-X uses a formal evidence scale:
 
-Alibaba Cloud Model Studio and Qwen-family models are proposed components of the AI layer because the project requires code-oriented reasoning, infrastructure interpretation, structured generation, and agentic workflows.
+- **E0 — assertion:** a stated capability with no captured supporting artifact.
+- **E1 — artifact:** a concrete, reviewable artifact exists.
+- **E2 — repeatable:** another operator can reproduce the result from the documented procedure.
+- **E3 — pilot validated:** measured in a real customer or representative pilot.
+- **E4 — independently corroborated:** evidence is additionally validated by an external party or independent system.
 
-The application deliberately does not hard-code a single model, pricing assumption, or token-consumption pattern. Final model selection will be driven by measured quality, latency, context requirements, safety, regional availability, and cost.
+The current public repository evidence is primarily **E1 / intended E2 fixture-level evidence**. Higher evidence levels will only be claimed after the required execution is actually performed and recorded.
 
-Current Model Studio documentation distinguishes standard pay-as-you-go inference from Token Plan and documents context-cache economics. The implementation will therefore select the correct commercial mechanism for the actual integration pattern rather than treating a public token maximum as an API budget entitlement.
+---
 
-## 9. Current Technical State
+## 8. Alibaba Cloud Strategic Value
 
-The project brief identifies OMEGA-X as **Alpha 0.4** and reports successful scanning of basic Terraform descriptors with translation toward Alibaba Cloud equivalents in local containerized environments.
+OMEGA-X is designed to create value for Alibaba Cloud beyond the consumption of the OMEGA-X platform itself.
 
-This application does not represent cloud-hosted enterprise deployment as already completed.
+The intended value chain is:
 
-The next stage is to establish reproducible validation on Alibaba Cloud infrastructure and progress from fixture-level evidence to measured pilot evidence.
+**Enterprise opportunity → technical qualification → migration evidence → POC → production decision → Alibaba Cloud workload**
 
-## 10. Evidence Strategy
+Potential strategic benefits include:
 
-The project uses a five-level evidence model:
+- faster technical qualification of enterprise opportunities,
+- lower engineering friction during POC preparation,
+- repeatable migration evidence for account and solution-engineering teams,
+- clearer TCO/ROI communication,
+- earlier identification of blockers and unsupported mappings,
+- measurable linkage between successful migrations and subsequent Alibaba Cloud workload consumption.
 
-- **E0 — assertion:** stated but unsupported,
-- **E1 — artifact:** reproducible file or output exists,
-- **E2 — repeatable:** procedure can be repeated independently,
-- **E3 — pilot validated:** measured in a real pilot,
-- **E4 — independently corroborated:** externally corroborated evidence.
+The application does not claim guaranteed revenue or guaranteed customer conversion. Those are outcomes to be measured.
 
-Grant-review claims will be presented according to their actual evidence level.
+---
 
-The initial Alpha 0.4 evidence package includes a non-production Terraform fixture, an expected source-to-target mapping, a machine-readable target artifact, a validation record, and a reproducibility runbook. These artifacts demonstrate the evidence framework and testable workflow; they are not presented as evidence of customer deployment or production migration.
+## 9. Model Studio / Qwen Strategy
 
-## 11. Measurement Plan
+The architecture is intentionally **model-flexible**. The project will benchmark suitable Alibaba Cloud models against defined workload classes instead of assuming a model before measurement.
 
-The primary performance hypothesis is that OMEGA-X can materially reduce the time required to qualify an enterprise migration.
+Evaluation dimensions include:
 
-The original project brief proposes a 60% reduction in migration cycle time and a 70% reduction in audit effort/cost. These figures are treated as **validation targets**, not existing measured results.
+- infrastructure reasoning quality,
+- code-generation correctness,
+- structured-output reliability,
+- context requirements,
+- latency,
+- inference cost,
+- cache efficiency where applicable,
+- safety and policy adherence.
 
-For each comparable pilot, the project will capture:
+Current Model Studio documentation distinguishes Token Plan / Credits-based mechanisms from standard pay-as-you-go inference and documents separate pricing behaviors for models and context caching. The project therefore does not treat a public token maximum as an unconditional production API budget.
 
-- elapsed qualification time,
-- engineering hours,
-- review hours,
-- number of generated artifacts,
-- validation iterations,
-- defect count,
-- model usage,
-- cache efficiency,
-- infrastructure cost,
-- migration decision outcome.
+---
 
-A baseline-vs-OMEGA-X comparison will then determine the observed effect size.
+## 10. Security, Safety, and Governance
+
+### Threat controls
+
+The system is designed around explicit trust boundaries:
+
+**Untrusted input → model reasoning → deterministic assurance → authorized execution**
+
+Controls include:
+
+- input sanitization and secret scanning,
+- least-privilege access,
+- customer-environment isolation,
+- policy gates,
+- bounded agent execution,
+- approval checkpoints,
+- immutable evidence records,
+- traceable promotion decisions.
+
+### Sensitive data
+
+The platform is designed to minimize unnecessary model context and distinguish secrets, customer data, infrastructure metadata, derived metadata, generated artifacts, and audit evidence.
+
+Sensitive-data detection may identify PII or other restricted information and trigger configured routing or policy controls.
+
+### Compliance positioning
+
+OMEGA-X provides technical controls that can support requirements such as GDPR and regional data-residency policies. It does not independently determine legal compliance and is not represented as legal advice. Final legal and regulatory decisions remain with the customer and its authorized advisers.
+
+---
+
+## 11. Measurement Framework
+
+The project will instrument every comparable migration assessment so performance can be evaluated against a baseline.
+
+### Primary KPI
+
+**Migration qualification cycle time** — elapsed time from agreed source-input acceptance to a technically reviewable target architecture and evidence package.
+
+### Secondary KPIs
+
+- engineering hours required,
+- review hours required,
+- number of validation iterations,
+- first-pass validation rate,
+- generated-artifact defect rate,
+- unresolved-assumption count,
+- AI inference cost per migration,
+- context-cache efficiency,
+- POC readiness rate,
+- POC-to-pilot conversion,
+- pilot-to-production conversion,
+- Alibaba Cloud consumption attributable to successful production migrations.
+
+The project brief proposes ambitious targets of approximately **60% reduction in migration cycle time**, **70% reduction in audit effort/cost**, and **40% reduction in AI cost per migration through context reuse**. These figures are retained as **validation targets only** and will be reported as measured outcomes only after appropriate baseline comparison.
+
+---
 
 ## 12. Enterprise Pilot Program
 
-The planned program consists of **15 Enterprise Pilot Programs**.
+The planned program consists of **15 Enterprise Pilot Programs**, subject to participant availability and appropriate scope.
 
 ### Stage A — Qualification
-Source architecture, workload profile, constraints, and decision criteria are captured.
 
-### Stage B — Translation and Validation
-OMEGA-X constructs a target architecture, generates migration artifacts, and executes deterministic validation.
+Capture workload profile, source architecture, constraints, decision criteria, and baseline metrics.
+
+### Stage B — Translation and assurance
+
+Construct target architecture proposals, generate migration artifacts, run deterministic validation, and produce an audit/evidence package.
 
 ### Stage C — Bounded POC
-A non-production environment is deployed where technically appropriate, with explicit authorization and controlled scope.
 
-### Stage D — Conversion Assessment
-Technical, financial, and operational outcomes are measured and the customer decides whether production migration is justified.
+Deploy a non-production environment only where justified and authorized. Validate functional, performance, security, and cost assumptions.
 
-The application does not assume that all 15 pilots become production customers. Conversion is a measured outcome.
+### Stage D — Conversion assessment
 
-## 13. Security, Data Governance, and Compliance
+Measure technical and business outcomes and determine whether a production migration is justified.
 
-OMEGA-X is designed to minimize unnecessary model context, separate customer metadata from secrets, apply access controls, record audit evidence, and support region-specific data handling policies.
+The program explicitly allows for unsuccessful pilots. A failed hypothesis that is properly measured is still useful evidence.
 
-Sensitive-data detection may be used to identify PII or other restricted information and trigger configured controls.
+---
 
-The product supports technical controls aligned with requirements such as GDPR and data-residency policies. It does not claim to independently determine legal compliance. Final legal and regulatory decisions remain with the customer and its authorized advisers.
+## 13. TCO / ROI Methodology
 
-## 14. Budget and Funding Rationale
+For each pilot, OMEGA-X will calculate scenario-based economics using explicit assumptions.
 
-The original project model uses a planning envelope of up to **USD 120,000** across:
+**Source annual cost**  
+= compute + storage + database + network + security + relevant managed-service charges + relevant operational labor.
+
+**Target annual cost**  
+= equivalent Alibaba Cloud resources + managed-service charges + migration-specific operational assumptions.
+
+**Migration cost**  
+= engineering labor + testing + temporary dual-run infrastructure + implementation cost.
+
+**First-year migration economics**  
+= source cost − target cost − migration cost.
+
+Reports will expose pricing date, source region, target region, capacity assumptions, commitment assumptions, transfer assumptions, storage growth, database requirements, labor assumptions, and excluded costs.
+
+No guaranteed ROI claim is made.
+
+---
+
+## 14. Funding Request and Use of Support
+
+The project requests support at the highest level permitted under the **current AI Catalyst terms**, subject to eligibility, approval, service restrictions, region, duration, and final program conditions.
+
+The original planning model uses an annual scenario of up to **USD 120,000**:
 
 | Workstream | Planning envelope | Purpose |
 |---|---:|---|
-| Compute / GPU | $72,000 | controlled migration sandboxes and pilot execution |
+| Compute / GPU | $72,000 | isolated migration sandboxes, validation and pilot workloads |
 | Data / context infrastructure | $24,000 | audit history, retrieval, object storage and context infrastructure |
-| Networking / security | $24,000 | gateways, traffic controls, security perimeter and pilot connectivity |
+| Networking / security | $24,000 | gateways, traffic controls, protection and pilot connectivity |
 | **Total** | **$120,000** | planning ceiling |
 
-These values are a project planning scenario. They are not presented as a guaranteed award or entitlement.
+This is a **planning scenario, not a guaranteed award**.
 
-Model inference consumption is tracked separately from general cloud infrastructure because Alibaba Cloud documents different billing mechanisms and model-dependent pricing.
+Actual spending will follow approved program eligibility and measured workload demand. Infrastructure will scale with pilot volume, and idle resources will be reduced or terminated.
 
-## 15. Why the Maximum Support Level Is Rational
+Model inference is tracked separately from general infrastructure because Model Studio uses distinct commercial and billing mechanisms depending on the selected service and integration pattern.
 
-The requested level is justified by the intended workload, not by an assumption that maximum funding is automatically granted.
+---
 
-A multi-pilot enterprise validation program creates simultaneous requirements for isolated environments, controlled compute, data and context infrastructure, networking/security controls, test execution, evidence retention, and cost attribution.
+## 15. Why the Requested Support Is Proportionate
 
-Funding therefore enables the project to move beyond a software demonstration and into a measurable enterprise-validation program.
+The funding requirement is driven by the transition from prototype evidence to repeatable enterprise validation.
+
+A multi-pilot program requires isolated environments, compute, data/context services, networking and security controls, instrumentation, validation, evidence retention, and pilot-level cost attribution.
+
+The objective is therefore not to subsidize an abstract R&D effort. It is to create an observable validation system in which Alibaba Cloud can measure whether OMEGA-X actually improves enterprise migration qualification and conversion economics.
+
+---
 
 ## 16. Twelve-Month Execution Plan
 
-| Period | Primary objective | Key outputs |
+| Period | Objective | Key outputs |
 |---|---|---|
-| Months 1–2 | Cloud onboarding and reproducibility | Alibaba Cloud environment, model evaluation, baseline instrumentation |
-| Months 3–4 | Controlled pilot launch | First pilot cohort, validated workflows, evidence packages |
-| Months 5–8 | Scale and optimize | Additional pilots, cost/context optimization, reliability improvements |
-| Months 9–12 | Commercial conversion readiness | Final pilot cohort, measured KPI results, production-readiness evidence |
+| Months 1–2 | Alibaba Cloud onboarding and technical baseline | environment setup, model benchmark, telemetry, reproducibility validation |
+| Months 3–4 | First controlled pilots | first cohort, evidence packages, security/policy validation |
+| Months 5–8 | Scale and optimize | additional pilots, reliability work, cost/context optimization |
+| Months 9–12 | Commercial conversion readiness | final cohort, measured KPI report, production-readiness evidence |
 
-## 17. Key Success Metrics
+### Stage gates
 
-The program will report:
+**Gate 1 — Technical reproducibility**  
+Fixture and core workflows reproduce successfully.
 
-1. migration qualification cycle time,
-2. manual engineering hours avoided,
-3. first-pass validation rate,
-4. generated-artifact defect rate,
-5. POC-to-pilot conversion,
-6. pilot-to-production conversion,
-7. AI cost per migration,
-8. context-cache efficiency,
-9. Alibaba Cloud consumption attributable to successful production migrations.
+**Gate 2 — Cloud validation**  
+Selected Alibaba Cloud services and model workflows are validated under actual regional/account constraints.
 
-The project will report both positive and negative results.
+**Gate 3 — Pilot readiness**  
+Security, observability, budget controls, and approval gates meet predefined criteria.
 
-## 18. Risk Management
+**Gate 4 — Commercial evidence**  
+Pilot outcomes are measured and converted into an evidence-backed production decision.
 
-### Model hallucination
-Mitigation: untrusted-output policy, deterministic validation, repair-loop limits, and human approval gates.
+---
 
-### Runaway agent execution
-Mitigation: maximum model calls, timeouts, token/context budgets, explicit termination conditions, and watchdog controls.
+## 17. Risks and Mitigations
 
-### Incorrect source-to-target mapping
-Mitigation: confidence scoring, compatibility checks, unresolved-assumption reporting, and human technical review.
+| Risk | Mitigation |
+|---|---|
+| Model hallucination | untrusted-output policy, deterministic validation, human approval |
+| Runaway agent loops | timeouts, model-call budgets, bounded retries, termination conditions |
+| Incorrect service mapping | confidence scoring, compatibility checks, explicit review items |
+| Secret/data exposure | scanning, minimization, access controls, residency policies |
+| Regional service constraints | capacity/availability verification before deployment |
+| Cost overrun | resource budgets, attribution, utilization review, automatic shutdown policies |
+| Commercial underperformance | treat conversion as measured KPI, not guaranteed outcome |
+| Weak evidence | evidence maturity gates and reproducibility records |
 
-### Sensitive-data exposure
-Mitigation: secret scanning, minimization, access controls, configurable residency policy, and audit logging.
+---
 
-### Regional service limitations
-Mitigation: capacity and service-availability verification before deployment; region is not hard-coded into the grant claim.
+## 18. Applicant and Project Credibility
 
-### Commercial underperformance
-Mitigation: pilot conversion is measured rather than assumed; unsuccessful pilots remain valid evidence.
+The applicant is **Andrzej Mikulski**, a private individual based in Cieszyn, Poland, with the professional distinctions **AFRP, AFIAP, and EFIAP**.
 
-## 19. Expected Strategic Impact
+The application intentionally does not manufacture a corporate entity, customer list, VC relationship, revenue figure, or unsupported commercial traction where none has been supplied.
 
-OMEGA-X is intended to create a repeatable technical bridge between enterprise interest in Alibaba Cloud and a verified migration decision.
+The strongest credibility signal is therefore the combination of:
 
-The strategic objective is not simply to automate Terraform translation. It is to compress the entire **technical qualification and proof cycle** that stands between a cloud opportunity and a deployment decision.
+- a clearly defined technical problem,
+- an agentic architecture with explicit safety boundaries,
+- real repository artifacts,
+- deterministic evidence controls,
+- measurable validation hypotheses,
+- a bounded pilot program,
+- and transparent separation between current capability and future goals.
 
-For Alibaba Cloud, the desired outcome is a more efficient enterprise conversion motion with measurable evidence at every stage.
+---
 
-For customers, the desired outcome is lower migration uncertainty, faster technical validation, and better visibility into cost, security, and operational risk.
+## 19. Specific Deliverables to Alibaba Cloud
 
-## 20. Applicant
+By the end of the funded validation program, the project is designed to produce:
+
+1. a reproducible Alibaba Cloud-hosted OMEGA-X environment,
+2. benchmark results for selected Model Studio / Qwen configurations,
+3. validated source-to-target migration workflows,
+4. security and policy validation reports,
+5. cost and context-efficiency measurements,
+6. pilot-level TCO/ROI evidence packages,
+7. aggregate pilot outcome reporting,
+8. production-readiness criteria and lessons learned,
+9. a documented conversion pathway for future enterprise opportunities.
+
+---
+
+## 20. Final Funding Rationale
+
+OMEGA-X is an infrastructure-AI project with a specific commercial objective: **reduce the proof burden that prevents enterprise workloads from reaching a new cloud provider**.
+
+Alibaba Cloud is uniquely relevant because it is both the target execution environment and a potential beneficiary of the resulting migration pipeline.
+
+The project does not ask Alibaba Cloud to accept unsupported claims. It proposes a measurable experiment:
+
+> **Give OMEGA-X controlled access to the relevant Alibaba Cloud capabilities, validate the system under real constraints, run enterprise pilots, and measure whether the technical qualification cycle becomes faster, safer, more economical, and more convertible.**
+
+The requested support is therefore best understood as an investment in **measurable enterprise-cloud conversion infrastructure**, not simply generic model experimentation.
+
+---
+
+## 21. Applicant Contact
 
 **Andrzej Mikulski**  
 Private individual  
@@ -286,4 +428,4 @@ Cieszyn, Poland
 +48 455 575 337  
 mojealterego21@gmail.com
 
-**Important:** Alibaba Cloud Account ID is intentionally excluded from this public repository and should be supplied only through the official application channel.
+**Alibaba Cloud Account ID:** supplied privately through the official Alibaba Cloud application channel and deliberately excluded from this public repository.
