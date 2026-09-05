@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "project": "OMEGA-X",
+  "fixture": "terraform-minimal",
+  "source": {
+    "provider": "aws",
+    "region": "eu-central-1"
+  },
+  "target": {
+    "provider": "alibaba-cloud",
+    "region": "TBD_AFTER_CAPACITY_REVIEW"
+  },
+  "resources": [
+    {
+      "source_address": "aws_instance.web",
+      "target_service": "ECS",
+      "confidence": "high",
+      "status": "proposal",
+      "deployment_allowed": false
+    },
+    {
+      "source_address": "aws_db_instance.app",
+      "target_service": "managed-postgresql-compatible-database",
+      "confidence": "medium",
+      "status": "proposal",
+      "deployment_allowed": false,
+      "review_items": [
+        "engine/version compatibility",
+        "high availability",
+        "storage/performance",
+        "backup/restore"
+      ]
+    }
+  ]
+}
