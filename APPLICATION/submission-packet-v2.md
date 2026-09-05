@@ -1,26 +1,37 @@
-# OMEGA-X — Final Submission Packet v2
+# OMEGA-X — Definitive Submission Packet
 
-## Core files
+## Primary submission artifacts
 
-1. `APPLICATION/grant-application-en.md` — full English grant application
-2. `APPLICATION/executive-summary.md` — executive summary
-3. `APPLICATION/final-submission.md` — concise application narrative
-4. `APPLICATION/ai-catalyst-form.md` — field-by-field form mapping
-5. `APPLICATION/reviewer-one-page.md` — reviewer one-page brief
-6. `APPLICATION/reviewer-qa.md` — reviewer questions and controlled answers
-7. `APPLICATION/claims-register.md` — factuality and claim-status register
-8. `APPLICATION/budget.md` — funding framework
-9. `APPLICATION/submission-checklist.md` — pre-submission controls
-10. `docs/submission-readiness.md` — final gate
+1. `APPLICATION/grant-application-final.md` — **canonical full English grant application**
+2. `APPLICATION/grant-application-en.md` — extended English application narrative
+3. `APPLICATION/grant-application-cover-letter.md` — reviewer cover letter
+4. `APPLICATION/executive-summary.md` — executive summary
+5. `APPLICATION/final-submission.md` — concise application narrative
+6. `APPLICATION/ai-catalyst-form.md` — form field mapping
+7. `APPLICATION/reviewer-one-page.md` — reviewer decision brief
+8. `APPLICATION/reviewer-qa.md` — controlled reviewer Q&A
+9. `APPLICATION/claims-register.md` — claim-status and factuality register
+10. `APPLICATION/budget.md` — funding framework
+11. `APPLICATION/submission-checklist.md` — submission controls
+12. `docs/submission-readiness.md` — final submission gate
 
-## Technical evidence
+## Real fixture-level evidence
 
 1. `EVIDENCE/fixtures/terraform-minimal/aws/main.tf`
 2. `EVIDENCE/fixtures/terraform-minimal/expected-target-mapping.md`
 3. `EVIDENCE/fixtures/terraform-minimal/expected-target-artifact.json`
 4. `EVIDENCE/fixtures/terraform-minimal/validation-result.json`
-5. `EVIDENCE/fixtures/terraform-minimal/runbook.md`
-6. `EVIDENCE/alpha-0.4-real-artifacts.md`
+5. `EVIDENCE/fixtures/terraform-minimal/validator.py`
+6. `EVIDENCE/fixtures/terraform-minimal/validate_schema.py`
+7. `EVIDENCE/fixtures/terraform-minimal/run-fixture.sh`
+8. `EVIDENCE/fixtures/terraform-minimal/runbook.md`
+9. `EVIDENCE/fixtures/terraform-minimal/CI-CHECKLIST.md`
+10. `EVIDENCE/fixtures/terraform-minimal/SECURITY-TEST-CASES.md`
+11. `EVIDENCE/fixtures/terraform-minimal/SECURITY-POLICY.json`
+12. `EVIDENCE/fixtures/terraform-minimal/generate-evidence-manifest.py`
+13. `EVIDENCE/fixtures/terraform-minimal/expected-run-output.json`
+14. `EVIDENCE/claim-evidence-matrix.md`
+15. `EVIDENCE/evidence-index.md`
 
 ## Architecture
 
@@ -28,7 +39,7 @@
 2. `ARCHITECTURE/agent-topology.md`
 3. `ARCHITECTURE/data-flow.md`
 4. `ARCHITECTURE/security-model.md`
-5. `SECURITY/SECURITY-POSITION.md`
+5. `SECURITY/security-and-compliance.md`
 6. `SECURITY/threat-model.md`
 
 ## Business case
@@ -38,14 +49,15 @@
 3. `BUSINESS/pilot-program.md`
 4. `BUSINESS/tco-roi-model.md`
 
-## External evidence policy
+## Integrity rule
 
-The packet distinguishes repository artifacts from independently executed evidence. Do not present fixture-level artifacts as proof of cloud execution, customer traction, or measured business outcomes.
+Repository artifacts are real and reviewable. Fixture-level artifacts must not be represented as live cloud execution, customer traction, production readiness, or measured percentage improvements.
 
 ## Applicant
 
-Andrzej Mikulski — private individual — AFRP, AFIAP, EFIAP  
+**Andrzej Mikulski** — private individual — AFRP · AFIAP · EFIAP  
+Cieszyn, Poland  
 +48 455 575 337  
 mojealterego21@gmail.com
 
-The Alibaba Cloud account identifier is intentionally excluded from this public repository.
+The Alibaba Cloud account identifier is intentionally excluded from this public repository and should be supplied only through the official private application channel.
