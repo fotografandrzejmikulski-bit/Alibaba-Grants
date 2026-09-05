@@ -1,4 +1,4 @@
-# Generated fixture artifact fingerprints
-# Recompute with a trusted local tool before external submission if these files are changed.
+# SHA-256 manifest for the immutable fixture inputs currently committed.
+# Generated from the exact repository file contents.
+# Regenerate after any fixture modification using a trusted local SHA-256 implementation.
 
-placeholder-only-fixture
