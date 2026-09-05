@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "rules": [
+    {
+      "id": "DEPLOY-001",
+      "description": "Deployment must remain blocked until explicit human approval.",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "REGION-001",
+      "description": "Unresolved target region cannot be promoted to deployment.",
+      "severity": "HIGH"
+    },
+    {
+      "id": "MAPPING-001",
+      "description": "Review-required mappings cannot be promoted without technical review.",
+      "severity": "HIGH"
+    },
+    {
+      "id": "SECRET-001",
+      "description": "Credential-like values must not be present in a sanitized fixture.",
+      "severity": "CRITICAL"
+    }
+  ]
+}
