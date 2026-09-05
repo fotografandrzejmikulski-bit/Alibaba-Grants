@@ -1,0 +1,4 @@
+# Generated fixture artifact fingerprints
+# Recompute with a trusted local tool before external submission if these files are changed.
+
+placeholder-only-fixture
