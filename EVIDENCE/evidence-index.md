@@ -1,32 +1,46 @@
-# Evidence Index
+# OMEGA-X — Evidence Index
 
-This file is the control point for externally shareable evidence. Only link artifacts that have actually been produced and verified.
+## Evidence hierarchy
 
-## Required evidence
+- **E0** — assertion / narrative only
+- **E1** — concrete repository artifact
+- **E2** — reproducible execution
+- **E3** — real pilot measurement
+- **E4** — independent corroboration
 
-| ID | Evidence | Status |
-|---|---|---|
-| E-001 | Alpha 0.4 architecture / demo description | documented from project brief |
-| E-002 | Terraform input fixture | TODO |
-| E-003 | Alibaba Cloud translated IaC fixture | TODO |
-| E-004 | Deterministic validation report | TODO |
-| E-005 | Security policy test set | TODO |
-| E-006 | Local end-to-end execution log | TODO |
-| E-007 | Alibaba Cloud-hosted execution log | TODO |
-| E-008 | Baseline vs OMEGA-X benchmark | TODO |
-| E-009 | Pilot #1 KPI record | TODO |
-| E-010 | Pilot cohort aggregate report | TODO |
-| E-011 | TCO/ROI sample report | TODO |
-| E-012 | Deck URL | TODO |
+## Current artifact set
 
-## Verification rule
+| ID | Artifact | Evidence level | Status |
+|---|---|---:|---|
+| EV-001 | `fixtures/terraform-minimal/aws/main.tf` | E1 | Present |
+| EV-002 | `fixtures/terraform-minimal/expected-target-mapping.md` | E1 | Present |
+| EV-003 | `fixtures/terraform-minimal/expected-target-artifact.json` | E1 | Present |
+| EV-004 | `fixtures/terraform-minimal/validation-result.json` | E1 | Present |
+| EV-005 | `fixtures/terraform-minimal/validator.py` | E1 / E2-ready | Present |
+| EV-006 | `fixtures/terraform-minimal/validate_schema.py` | E1 / E2-ready | Present |
+| EV-007 | `fixtures/terraform-minimal/run-fixture.sh` | E1 / E2-ready | Present |
+| EV-008 | `fixtures/terraform-minimal/runbook.md` | E1 / E2-ready | Present |
+| EV-009 | `fixtures/terraform-minimal/CI-CHECKLIST.md` | E1 | Present |
+| EV-010 | `fixtures/terraform-minimal/generate-evidence-manifest.py` | E1 / E2-ready | Present |
+| EV-011 | `claim-evidence-matrix.md` | E1 | Present |
 
-An artifact is submission-ready only when it has:
+## Evidence that is deliberately not claimed yet
 
-- an owner,
-- a version/date,
-- a reproducible source or test fixture,
-- a clear description of what it proves,
-- no confidential customer data unless specifically authorized.
+The following require actual execution or external records before they can be represented as completed evidence:
+
+- live Alibaba Cloud execution,
+- production deployment,
+- customer traction,
+- pilot KPI measurements,
+- benchmarked percentage improvements,
+- independently corroborated results.
+
+## Interpretation
+
+The repository now contains real artifacts demonstrating a controlled, non-production, fixture-level workflow. The fixture's machine-readable validation record keeps deployment blocked pending human approval and explicitly states that it is not evidence of cloud execution.
+
+## Promotion rule
+
+An item may be promoted from E1/E2 to E3 only after execution in a real or formally representative pilot has been captured with timestamp, environment, inputs, outputs, metrics, and reproducible references.
 
 Do not manufacture evidence to fill a checklist gap.
